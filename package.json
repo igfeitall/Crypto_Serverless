@@ -19,5 +19,8 @@
   "homepage": "https://github.com/igfeitall/Cripto_Serverless#readme",
   "devDependencies": {
     "serverless": "^3.22.0"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
   }
 }

@@ -2,14 +2,30 @@ service: cripto-serverless
 frameworkVersion: '3'
 
 custom:
-  TABLE_NAME: Tokens
-  COINLAYER_KEY: e03001a37d6151bef1e1bb9190495e5e
+  UPDATE_TIMER: 20
+  settings:
+    TABLE_NAME: Tokens
+    COINLAYER_KEY: e03001a37d6151bef1e1bb9190495e5e
+    HISTORIC_LIMIT: 5
 
 provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
   region: us-east-1
+  environment: ${self:custom.settings}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:Query
+        - dynamodb:BatchWriteItem
+      Resource:
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.settings.TABLE_NAME}"
+
 
 functions:
   hello:
@@ -19,3 +35,20 @@ functions:
           path: /
           method: GET
 
+resources:
+  Resources:
+    TokenTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.settings.TABLE_NAME}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+        - AttributeName: "tokenId"
+          AttributeType: "S"
+        - AttributeName: "timestamp"
+          AttributeType: "N"
+        KeySchema:
+        - AttributeName: "tokenId"
+          KeyType: "HASH"
+        - AttributeName: "timestamp"
+          KeyType: "RANGE"

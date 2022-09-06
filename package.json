@@ -1,0 +1,23 @@
+{
+  "name": "cripto-serverless",
+  "version": "1.0.0",
+  "description": "Cripto RestAPI, to check criptocoins exchange rate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igfeitall/Cripto_Serverless.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igfeitall/Cripto_Serverless/issues"
+  },
+  "homepage": "https://github.com/igfeitall/Cripto_Serverless#readme",
+  "devDependencies": {
+    "serverless": "^3.22.0"
+  }
+}

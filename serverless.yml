@@ -1,0 +1,21 @@
+service: cripto-serverless
+frameworkVersion: '3'
+
+custom:
+  TABLE_NAME: Tokens
+  COINLAYER_KEY: e03001a37d6151bef1e1bb9190495e5e
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+
+functions:
+  hello:
+    handler: lambdas/hello.handler
+    events:
+      - httpApi:
+          path: /
+          method: GET
+

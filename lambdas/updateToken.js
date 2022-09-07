@@ -1,5 +1,5 @@
 const { response, getUniqueTokens } = require('../controllers/utils')
-const { listAll } = require('../controllers/dynamoController')
+const { listAll, addItems } = require('../controllers/dynamoController')
 const coinLayer = require('../controllers/coinLayerController')
 
 async function updateToken (event, context, callback) {

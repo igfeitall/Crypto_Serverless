@@ -39,7 +39,7 @@ const deleteById = async (tokenId) => {
   const queryResults = await dynamoClient.query(queryParams).promise()
   if (queryResults.Items && queryResults.Items.length > 0) {
     
-    const batchCalls = chunks(queryResults.Items, 5).map( async (chunk) => {
+    const batchCalls = chunks(queryResults.Items, 25).map( async (chunk) => {
       const deleteRequests = chunk.map( item => {
         return {
           DeleteRequest : {
@@ -58,20 +58,35 @@ const deleteById = async (tokenId) => {
         }
       }
 
-      await dynamoClient.batchWrite(batchWriteParams).promise()
+      return await dynamoClient.batchWrite(batchWriteParams).promise()
     })
 
     return Promise.all(batchCalls)
   }
 }
 
-const addItem = async (item) => {
-  const params = {
-    TableName,
-    Item: item
-  }
-  
-  return dynamoClient.put(params).promise()
+const addItems = async (items) => {
+
+  const batchCalls = chunks(items, 25).map( async () => {
+    const PutRequests = items.map( (item) => {
+      console.log(item);
+      return {
+        PutRequest: {
+          Item: item
+        }
+      }
+    })
+
+    const batchWriteParams = {
+      RequestItems: {
+        [Database.TABLE_NAME]: PutRequests
+      }
+    }
+
+    return await dynamoClient.batchWrite(batchWriteParams).promise()
+  })
+
+  return Promise.all(batchCalls)
 }
 
-module.exports = {getById, listAll, deleteById, addItem}
+module.exports = {getById, listAll, deleteById, addItems}

@@ -23,6 +23,13 @@ function formatData(item){
   return objFormated
 }
 
+// Create a response
+function response(statusCode, message) {
+  return {
+    statusCode: statusCode,
+    body: JSON.stringify(message)
+  };
+}
 
 // return an array of the updated version of each token
 function getUniqueTokens(data){
@@ -50,4 +57,4 @@ function addUnique(list, newItem){
 }
 
 
-module.exports = {chunks, getUniqueTokens, formatData}
+module.exports = {chunks, getUniqueTokens, formatData, response}

@@ -34,6 +34,12 @@ functions:
       - httpApi:
           path: /
           method: GET
+  createToken:
+    handler: lambdas/createToken.handler
+    events:
+      - httpApi:
+          path: /tokens
+          method: POST
 
 resources:
   Resources:

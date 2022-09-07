@@ -20,23 +20,22 @@ function hasObject(object, name){
   if(!tokens || tokens == {} || tokens.length <= 0){
     throw myError(`Object not found. You must pass an ${name} object for this function`, 400)
   }
+
+  return tokens
 }
 
 function hasToken(rates, token){
 
   const link = 'https://coinlayer.com/symbols'
-  const rate = rates[token]
 
-  if(!rate || rate == [] || rate == {} ){
+  if(!rates[token] || rates[token] == [] || rates[token] == {} ){
     throw myError(`Token: ${token} invalid. All tokens must be valid, visit: ${link} to see all valid tokens`, 400)
   }
 }
 
 function hasParam(event, id){
 
-  const param = event.pathParameters[id]
-
-  if(!param || param == {} || param == []){
+  if(!event.pathParameters[id] || event.pathParameters[id] == {} || event.pathParameters[id] == []){
     throw myError(`ID invalid. You must pass and valid token for the id as a Parameter.`, 400)
   }
 }

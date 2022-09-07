@@ -12,8 +12,7 @@ async function createToken (event, context, callback) {
     hasBody(event)
     const body  = JSON.parse(event.body)
 
-    hasObject(body, 'tokens')
-    const { tokens } = body
+    const tokens = hasObject(body, 'tokens')
     console.log(tokens);
 
     // get timestamp and an array of exchangeRate

@@ -30,6 +30,7 @@ function response(statusCode, message) {
 
 // return an array of the updated version of each token
 function getUniqueTokens(data){
+  
   const uniqueTokens = []
   for (let i = data.Items.length-1; i>=0; i--){
     const objToken = formatData(data.Items[i])

@@ -30,7 +30,7 @@ function response(statusCode, message) {
 
 // return an array of the updated version of each token
 function getUniqueTokens(data){
-  
+
   const uniqueTokens = []
   for (let i = data.Items.length-1; i>=0; i--){
     const objToken = formatData(data.Items[i])
@@ -44,7 +44,7 @@ function addUnique(array, newItem){
   let contains = array.filter( item => item.tokenId === newItem.tokenId).length > 0
 
   if(!contains){
-    list.push(newItem)
+    array.push(newItem)
   }
 }
 

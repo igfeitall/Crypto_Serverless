@@ -1,5 +1,5 @@
 const { response } = require('../utils/utils')
-const { hasBody } = require('../utils/validation')
+const { hasBody, hasObject, hasToken } = require('../utils/validation')
 const { addItems } = require('../controllers/dynamoController')
 const coinLayer = require('../controllers/coinLayerController')
 

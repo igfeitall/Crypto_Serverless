@@ -1,4 +1,4 @@
-const { response, getUniqueTokens } = require('../controllers/utils')
+const { response, getUniqueTokens } = require('../utils/utils')
 const { listAll, addItems } = require('../controllers/dynamoController')
 const coinLayer = require('../controllers/coinLayerController')
 

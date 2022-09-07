@@ -28,7 +28,7 @@ function hasToken(rates, token){
   }
 }
 
-function hasParamm(event, id){
+function hasParam(event, id){
   const param = event.pathParameters[id]
 
   if(!param || param === {} || param === []){
@@ -36,4 +36,4 @@ function hasParamm(event, id){
   }
 }
 
-module.exports = { hasBody, hasObject }
+module.exports = { hasBody, hasObject, hasToken, hasParam }

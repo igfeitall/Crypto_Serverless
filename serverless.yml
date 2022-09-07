@@ -1,8 +1,10 @@
+org: igfeitall
+console: true
 service: cripto-serverless
 frameworkVersion: '3'
 
 custom:
-  UPDATE_TIMER: 20
+  UPDATE_TIMER: 60 minutes
   settings:
     TABLE_NAME: Tokens
     COINLAYER_KEY: e03001a37d6151bef1e1bb9190495e5e
@@ -58,6 +60,12 @@ functions:
       - httpApi:
           path: /tokens/{id}
           method: DELETE
+  updateToken:
+    handler: lambdas/updateToken.handler
+    events:
+      - eventBridge:
+          enable: true
+          schedule: rate(${self:custom.UPDATE_TIMER})
 
 resources:
   Resources:

@@ -5,8 +5,6 @@ function myError(message, statusCode){
   return error
 }
 
-
-
 function hasBody(event){
 
   if(!event.body || event.body === {} || event.body === []){
@@ -27,6 +25,14 @@ function hasToken(rates, token){
 
   if(!rates[token]){
     throw myError(`Token: ${token} invalid.\nAll tokens must be valid, visit: ${link} to see all valid tokens`, 400)
+  }
+}
+
+function hasParamm(event, id){
+  const param = event.pathParameters[id]
+
+  if(!param || param === {} || param === []){
+    throw myError(`ID: ${param} invalid.\nYou must pass and valid token for the id as a Parameter.`, 400)
   }
 }
 

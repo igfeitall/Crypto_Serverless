@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk')
-const { chunks } = require('./utils')
+const { chunks } = require('../utils/utils')
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient()
 const TableName = process.env.TABLE_NAME

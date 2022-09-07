@@ -1,6 +1,3 @@
-// maybe this functions needs to be in another place
-
-
 function chunks(inputArray, perChunk) {
   return inputArray.reduce((all,one,i) => {
     const ch = Math.floor(i/perChunk); 
@@ -42,16 +39,10 @@ function getUniqueTokens(data){
   return uniqueTokens
 }
 
-function addUnique(list, newItem){
-  let unique = true
-  for(item of list){
-    if(newItem.tokenId === item.tokenId){
-      unique = false
-      break
-    }
-  }
+function addUnique(array, newItem){
+  let contains = array.filter( item => item.tokenId === newItem.tokenId).length > 0
 
-  if(unique){
+  if(!contains){
     list.push(newItem)
   }
 }

@@ -4,7 +4,7 @@ service: cripto-serverless
 frameworkVersion: '3'
 
 custom:
-  UPDATE_TIMER: 10 minutes
+  UPDATE_TIMER: 30 minutes
   settings:
     TABLE_NAME: Tokens
     COINLAYER_KEY: e03001a37d6151bef1e1bb9190495e5e

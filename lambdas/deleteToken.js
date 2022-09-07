@@ -10,16 +10,15 @@ async function deleteToken (event, context, callback) {
     
     hasParam(event, 'id')
     const tokenId = String(event.pathParameters.id)
-    console.log(tokenId);
+    console.log(tokenId, typeof tokenId);
     
-    // connectin
-    deleteById(tokenId).then(() => {
-      callback(null, response(200, { tokenDeleted: tokenId}))
-    })
+    // connection
+    const deletedTokens = await deleteById(tokenId)
+    callback(null, response(200, { tokenDeleted: tokenId}))
   } catch (err) {
     
     console.error(err)
-    callback(null, response(err.statusCode, err))
+    callback(null, response(err.statusCode, err.message))
   }
 }
 

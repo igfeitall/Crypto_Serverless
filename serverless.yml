@@ -64,7 +64,7 @@ functions:
     handler: lambdas/updateToken.handler
     events:
       - eventBridge:
-          enable: true
+          enable: false
           schedule: rate(${self:custom.UPDATE_TIMER})
 
 resources:

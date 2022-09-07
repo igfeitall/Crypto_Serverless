@@ -1,4 +1,5 @@
 const AWS = require('aws-sdk')
+const { arrayExist } = require('../utils/validation')
 const { chunks } = require('../utils/utils')
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient()
@@ -37,8 +38,11 @@ const deleteById = async (tokenId) => {
   }
 
   const queryResults = await dynamoClient.query(queryParams).promise()
-  if (queryResults.Items && queryResults.Items.length > 0) {
+  console.log("querry result", queryResults)
+
+  try {
     
+    arrayExist(queryResults.Item, tokenId)
     const batchCalls = chunks(queryResults.Items, 25).map( async (chunk) => {
       const deleteRequests = chunk.map( item => {
         return {
@@ -58,10 +62,15 @@ const deleteById = async (tokenId) => {
         }
       }
 
-      return await dynamoClient.batchWrite(batchWriteParams).promise()
-    })
+      const returnValue = await dynamoClient.batchWrite(batchWriteParams).promise()
+      console.log(returnValue, 'deleted values');
+      return returnValue
+  })
 
-    return Promise.all(batchCalls)
+  return Promise.all(batchCalls)
+  } catch (err) {
+    
+    throw err
   }
 }
 

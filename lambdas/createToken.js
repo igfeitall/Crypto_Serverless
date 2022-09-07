@@ -14,6 +14,7 @@ async function createToken (event, context, callback) {
 
     hasObject(body, 'tokens')
     const { tokens } = body
+    console.log(tokens);
 
     // get timestamp and an array of exchangeRate
     const { timestamp, rates } = await coinLayer.getLive()
@@ -34,7 +35,7 @@ async function createToken (event, context, callback) {
   } catch (err) {
 
     console.error(err)
-    callback(null, response(err.statusCode, err))
+    callback(null, response(err.statusCode, err.message))
   }
 }
 

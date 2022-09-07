@@ -1,10 +1,12 @@
 const { response } = require('../controllers/utils')
+const { addItems } = require('../controllers/dynamoController')
+const coinLayer = require('../controllers/coinLayerController')
 
 async function createToken (event, context, callback) {
   console.log('create');
 
   const { tokens } = JSON.parse(event.body)
-  const {timestamp, rates} = await coinLayer.getLive()
+  const { timestamp, rates } = await coinLayer.getLive()
   
   // validation
 
@@ -16,13 +18,15 @@ async function createToken (event, context, callback) {
   })
   
   // connection
-  return addItems(tokensObj)
-  .then((data) => {
-    callback(null, response(201, data))
-  }).catch((err) => {
+  try {
+
+    await addItems(tokensObj)
+    callback(null, response(201, tokensObj))
+  } catch (err) {
+    
     console.error(err)
     callback(null, response(err.statusCode, err))
-  })  
+  }
 }
 
 module.exports.handler = createToken

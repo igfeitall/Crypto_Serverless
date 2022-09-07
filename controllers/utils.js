@@ -56,5 +56,4 @@ function addUnique(list, newItem){
   }
 }
 
-
 module.exports = {chunks, getUniqueTokens, formatData, response}

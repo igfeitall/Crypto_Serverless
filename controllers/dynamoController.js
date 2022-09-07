@@ -79,7 +79,7 @@ const addItems = async (items) => {
 
     const batchWriteParams = {
       RequestItems: {
-        [Database.TABLE_NAME]: PutRequests
+        [TableName]: PutRequests
       }
     }
 

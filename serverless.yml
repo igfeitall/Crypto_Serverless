@@ -40,6 +40,24 @@ functions:
       - httpApi:
           path: /tokens
           method: POST
+  listToken:
+    handler: lambdas/listToken.handler
+    events:
+      - httpApi:
+          path: /tokens
+          method: GET
+  getToken:
+    handler: lambdas/getToken.handler
+    events:
+      - httpApi:
+          path: /tokens/{id}
+          method: GET
+  deleteToken:
+    handler: lambdas/deleteToken.handler
+    events:
+      - httpApi:
+          path: /tokens/{id}
+          method: DELETE
 
 resources:
   Resources:

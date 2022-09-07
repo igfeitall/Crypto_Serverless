@@ -3,7 +3,7 @@ const { hasBody, hasObject, hasToken } = require('../utils/validation')
 const { addItems } = require('../controllers/dynamoController')
 const coinLayer = require('../controllers/coinLayerController')
 
-// function to add tokens in the tracker
+// add tokens in the tracker
 async function createToken (event, context, callback) {
   console.log('create');
 

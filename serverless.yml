@@ -4,10 +4,10 @@ service: cripto-serverless
 frameworkVersion: '3'
 
 custom:
-  UPDATE_TIMER: 30 minutes
+  UPDATE_TIMER: 60 minutes
   settings:
     TABLE_NAME: Tokens
-    COINLAYER_KEY: e03001a37d6151bef1e1bb9190495e5e
+    COINLAYER_KEY: 61508fe481449bc21d32987cef781e4b
     HISTORIC_LIMIT: 5
 
 provider:
@@ -64,7 +64,7 @@ functions:
     handler: lambdas/updateToken.handler
     events:
       - eventBridge:
-          enable: false
+          enable: true
           schedule: rate(${self:custom.UPDATE_TIMER})
 
 resources:

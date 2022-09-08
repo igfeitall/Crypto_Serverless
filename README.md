@@ -69,18 +69,35 @@ $ serverless deploy
 ## 🌐 Endpoint List
 
   - POST /tokens (add one or many tokens to track):
+
+  The Cripto Serverless use a 3rd Party Token API, this is the list of symbols : https://coinlayer.com/symbols.
+
+  ```
+  // example
+  { 
+
+  "body": ['BTC', 'ETH', `DOGE`']
+
+  }
+  ```
+
+  - GET /tokens (return the list of all tokens and their last exchange rate and the evolution rate).
+
+  - GET /tokens/:id (return specific token values and the history of exchange rates and evolutions).
   
   ```
-  "body": ['token1', 'token2', ..., 'tokenn']
+  // example
+
+  /tokens/BTC
   ```
 
-  - GET /tokens return the list of all tokens and their last exchange rate and the evolution rate (for
-example +3%).
+  - DELETE /tokens/:id (delete all ocurrency of a token in the database, and don`t track it anymore).
 
-  - GET /tokens/:id return specific token values and the history of exchange rates and evolutions
-(can specify a limit as a parameter).
-
-  - DELETE /tokens/:id.
+  ```
+  // example
+  
+  /tokens/BTC
+  ```
 
   The updateToken function is running on the AWS EventBridge.
 

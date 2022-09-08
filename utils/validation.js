@@ -21,12 +21,12 @@ class validation{
     }
   }
   
-  static hasObject(object, name){
+  static hasObject(object){
   
-    const tokens = object[name]
+    const tokens = object.tokens
   
     if(notExist(tokens)){
-      throw myError(`Object not found. You must pass an ${name} object for this function`, 400)
+      throw myError(`Object not found. You must pass an token array. like tokens: ["BTC, "ETH"]`, 400)
     }
   
     return tokens
@@ -49,6 +49,10 @@ class validation{
   }
   
   static arrayExist(array, tokenId){
+
+    if(!Array.isArray(array)){
+      throw myError(`Something got Wrong in Database. Try again later.`, 500)
+    }
   
     if(notExist(array)){
       throw myError(`TokenId: ${tokenId} not founded. try to pass an existent token.`, 400)

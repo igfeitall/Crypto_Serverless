@@ -6,14 +6,14 @@
 ![Node](https://img.shields.io/node/v/serverless?style=for-the-badge)
 
 
-### IMAGEM
+### IMAGE
  
 > The Cripto Serverless is a Serverless API, made with Node.js and Serverless Framework, using the AWS Lambda and others AWS functions. Your job is to keep track of some criptocoins exchange rate to $(Dollar), and the evolution rate in % since the last iteration. It keep tracks the cripto by a given array, and can return a history of the recent rates.
 
 ## 💻 Prerequisites
 
 Before we start, check the following prerequisites:
-<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
+
 * Instaled the most recent version of JavaScript and Node.
 * Have and Windows Machine
 * Created and Account on Amazon and have IAM for this application
@@ -43,6 +43,9 @@ $ serverless deploy
 
 ## ☕ Using Cripto API
 
+This is a list of some Configurations needed:
+
+
 To run the Project you only need to deploy it:
 
 ```
@@ -52,6 +55,17 @@ $ serverless deploy
 
 ## ☕ Endpoint List
 
+  - POST /tokens add one or many tokens to the list.
+
+  - GET /tokens return the list of all tokens and their last exchange rate and the evolution rate (for
+example +3%).
+
+  - GET /tokens/:id return specific token values and the history of exchange rates and evolutions
+(can specify a limit as a parameter).
+
+  - DELETE /tokens/:id.
+
+  The updateToken function is running on the AWS EventBridge.
 
 ## 📝 License
 

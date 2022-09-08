@@ -13,7 +13,7 @@ async function deleteToken (event, context, callback) {
 
     
     // connection
-    const deletedTokens = await deleteById(tokenId)
+    await deleteById(tokenId)
     callback(null, response(200, { tokenDeleted: tokenId}))
   } catch (err) {
     

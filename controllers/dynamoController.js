@@ -42,6 +42,8 @@ const deleteById = async (tokenId) => {
 
   try {
     
+    console.log(validation)
+    console.log(validation.arrayExist);
     validation.arrayExist(queryResults.Item, tokenId)
     const batchCalls = chunks(queryResults.Items, 25).map( async (chunk) => {
       const deleteRequests = chunk.map( item => {

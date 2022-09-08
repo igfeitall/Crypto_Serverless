@@ -1,0 +1,2 @@
+const dynamoDB = require('../dynamoController')
+

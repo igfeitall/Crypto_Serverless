@@ -1,4 +1,5 @@
 function chunks(inputArray, perChunk) {
+  
   return inputArray.reduce((all, one, i) => {
     const ch = Math.floor(i/perChunk)
     all[ch] = [].concat((all[ch] || []), one)

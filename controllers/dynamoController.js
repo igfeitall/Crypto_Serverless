@@ -2,9 +2,25 @@ const AWS = require('aws-sdk')
 const validation = require('../utils/validation')
 const { chunks } = require('../utils/utils')
 
-const dynamoClient = new AWS.DynamoDB.DocumentClient()
+
+let options = {}
+if(process.env.IS_OFFLINE){
+  options = {
+    region: 'localhost',
+    endpoint: 'http://localhost:8000'
+  }
+}
+
+if(process.env.JEST_WORKER_ID){
+  options = {
+    region: 'local-env',
+    endpoint: 'http://localhost:8000',
+    sslEnable: false
+  }
+}
+
+const dynamoClient = new AWS.DynamoDB.DocumentClient(options)
 const TableName = process.env.TABLE_NAME
-  
 
 class dynamoDB{
 

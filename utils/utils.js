@@ -1,7 +1,7 @@
 function chunks(inputArray, perChunk) {
-  return inputArray.reduce((all,one,i) => {
-    const ch = Math.floor(i/perChunk); 
-    all[ch] = [].concat((all[ch]||[]),one); 
+  return inputArray.reduce((all, one, i) => {
+    const ch = Math.floor(i/perChunk)
+    all[ch] = [].concat((all[ch] || []), one)
     return all
  }, [])
 }
@@ -11,11 +11,12 @@ function formatData(item){
   
   const miliseconds = item.timestamp * 1000
   const date = new Date(miliseconds).toLocaleString("en-US")
+  const evolutionPerc = (item.evolutionRate * 100).toFixed(2) + '%'
 
   const objFormated = { tokenId: item.tokenId, 
                         timestamp: date,
                         exchangeRate: item.exchangeRate,
-                        evolutionRate: item.evolutionRate}
+                        evolutionRate: evolutionPerc}
   
   return objFormated
 }

@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk')
-const { arrayExist } = require('../utils/validation')
+const validation = require('../utils/validation')
 const { chunks } = require('../utils/utils')
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient()
@@ -42,7 +42,7 @@ const deleteById = async (tokenId) => {
 
   try {
     
-    arrayExist(queryResults.Item, tokenId)
+    validation.arrayExist(queryResults.Item, tokenId)
     const batchCalls = chunks(queryResults.Items, 25).map( async (chunk) => {
       const deleteRequests = chunk.map( item => {
         return {

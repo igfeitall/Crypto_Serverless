@@ -1,5 +1,5 @@
 const { response } = require('../utils/utils')
-const { hasBody, hasObject, hasToken } = require('../utils/validation')
+const validation = require('../utils/validation')
 const { addItems } = require('../controllers/dynamoController')
 const coinLayer = require('../controllers/coinLayerController')
 
@@ -9,10 +9,10 @@ async function createToken (event, context, callback) {
 
   try {
 
-    hasBody(event)
+    validation.hasBody(event)
     const body  = JSON.parse(event.body)
 
-    const tokens = hasObject(body, 'tokens')
+    const tokens = validation.hasObject(body, 'tokens')
     console.log(tokens);
 
     // get timestamp and an array of exchangeRate
@@ -21,7 +21,8 @@ async function createToken (event, context, callback) {
     // mapping the tokens array to format they to put in Database
     const tokensObj = tokens.map( (token) => {
       
-      hasToken(rates, token)
+      validation.tokenSaved(token)
+      validation.hasToken(rates, token)
       const exchangeRate = rates[token]
 
       const evolutionRate = 0

@@ -1,4 +1,4 @@
-const { listAll } = require('../controllers/dynamoController')
+const dynamoDB = require('../controllers/dynamoController')
 
 function myError(message, statusCode){
   const error = new Error(message)
@@ -57,7 +57,7 @@ class validation{
 
   static async tokenSaved(tokens){
 
-    const data = await listAll()
+    const data = await dynamoDB.listAll()
     const contains = data.Items.filter( item => tokens.includes(item.tokenId)).length > 0
 
     if(contains){

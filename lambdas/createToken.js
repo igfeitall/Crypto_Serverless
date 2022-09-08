@@ -1,6 +1,6 @@
 const { response } = require('../utils/utils')
 const validation = require('../utils/validation')
-const { addItems } = require('../controllers/dynamoController')
+const dynamoDB = require('../controllers/dynamoController')
 const coinLayer = require('../controllers/coinLayerController')
 
 // add tokens in the tracker
@@ -33,7 +33,7 @@ async function createToken (event, context, callback) {
     })
 
     // connection
-    await addItems(tokensObj)
+    await dynamoDB.addItems(tokensObj)
     callback(null, response(201, tokensObj))
   } catch (err) {
 

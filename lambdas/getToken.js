@@ -1,6 +1,6 @@
 const { response, formatData } = require('../utils/utils')
 const validation = require('../utils/validation')
-const { getById } = require('../controllers/dynamoController')
+const dynamoDB = require('../controllers/dynamoController')
 
 // get the history of a Token
 async function getToken (event, context, callback) {
@@ -13,7 +13,7 @@ async function getToken (event, context, callback) {
     console.log(tokenId);
     
     // connection
-    const tokenHistory = await getById(tokenId)
+    const tokenHistory = await dynamoDB.getById(tokenId)
 
     validation.arrayExist(tokenHistory.Items, tokenId)
     const formatedTokenHistory = tokenHistory.Items.map( token => formatData(token))

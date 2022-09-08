@@ -1,5 +1,5 @@
 const { response, getUniqueTokens } = require('../utils/utils')
-const { listAll, addItems } = require('../controllers/dynamoController')
+const dynamoDB = require('../controllers/dynamoController')
 const coinLayer = require('../controllers/coinLayerController')
 
 // function used by event bridge
@@ -12,7 +12,7 @@ async function updateToken (event, context, callback) {
     const { timestamp, rates } = await coinLayer.getLive()
     
     // connection
-    const dataAll = await listAll()
+    const dataAll = await dynamoDB.listAll()
 
     // get an array of tokens by the recency of timestamp, that is a sort key
     const tokens = getUniqueTokens(dataAll)
@@ -36,7 +36,7 @@ async function updateToken (event, context, callback) {
       return {tokenId: token.tokenId, timestamp, exchangeRate, evolutionRate}
     })
     
-    const tokensUpdated = addItems(tokensObj)
+    const tokensUpdated = dynamoDB.addItems(tokensObj)
     callback(null, response({ updatedTokens: tokensUpdated }))
   } catch (err) {
     

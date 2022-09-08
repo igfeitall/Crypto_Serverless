@@ -15,13 +15,16 @@ async function createToken (event, context, callback) {
     const tokens = validation.hasObject(body, 'tokens')
     console.log(tokens);
 
+    await validation.tokenSaved(tokens)
+
     // get timestamp and an array of exchangeRate
     const { timestamp, rates } = await coinLayer.getLive()
 
     // mapping the tokens array to format they to put in Database
     const tokensObj = tokens.map( (token) => {
       
-      validation.tokenSaved(token)
+
+      console.log(token, 'post test');
       validation.hasToken(rates, token)
       const exchangeRate = rates[token]
 

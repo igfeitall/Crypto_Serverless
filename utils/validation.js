@@ -17,7 +17,7 @@ class validation{
   hasBody(event){
   
     if(notExist(event.body)){
-      throw myError('Body not found.\nYou must pass an body for this function', 400)
+      throw myError('Body not found. You must pass an body for this function', 400)
     }
   }
   
@@ -48,17 +48,19 @@ class validation{
     }
   }
   
-  tokenSaved(token){
-  
-    listAll().then( data => {
-  
-      const contains = data.Items.filter( item => item.tokenId === token).length > 0
-      if(contains){
-        throw myError(`Token: ${token} already is tracked. You need to inserd a new token to track.`, 400)
-      }
-    }).catch( err => {
-      throw err
-    })
+  async tokenSaved(tokens){
+
+    let err = 0
+
+    const data = await listAll()
+    const contains = data.Items.filter( item => tokens.includes(item.tokenId)).length > 0
+
+    if(contains){
+      err = myError(`Token: ${tokens} already is tracked. You need to insert a new token to track.`, 400)
+    }
+
+    console.log(err);
+    if(err) throw err
   }
   
   arrayExist(array, tokenId){

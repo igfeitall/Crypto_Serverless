@@ -19,8 +19,21 @@ Before we start, check the following prerequisites:
 * Created and Account on Amazon and have IAM for this application
 * Installed the Amazon CLI
 
-## 🚀 Connecting you Amazon Keys
+## 🤖 Connecting you Amazon Keys
 
+To run this project you need to connect your own keys:
+
+```
+# start the configuration
+$ aws configure [--profile profile-name]
+
+# this is the following options to configure
+$ aws configure
+AWS Access Key ID [None]: accesskey
+AWS Secret Access Key [None]: secretkey
+Default region name [None]: us-east-1
+Default output format [None]: 
+```
 
 
 ## 🚀 Instaling Cripto Serverless
@@ -53,9 +66,13 @@ To run the Project you only need to deploy it:
 $ serverless deploy
 ```
 
-## ☕ Endpoint List
+## 🌐 Endpoint List
 
-  - POST /tokens add one or many tokens to the list.
+  - POST /tokens (add one or many tokens to track):
+  
+  ```
+  "body": ['token1', 'token2', ..., 'tokenn']
+  ```
 
   - GET /tokens return the list of all tokens and their last exchange rate and the evolution rate (for
 example +3%).

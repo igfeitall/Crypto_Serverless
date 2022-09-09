@@ -1,4 +1,7 @@
-const validation = require('../validation')
+const Validation = require('../validation')
+const DynamoController = require('../../controllers/dynamoController')
+
+const validation = new Validation()
 
 test('event must contain an body not empty', () => {
   const event = {test: 'test'}
@@ -45,7 +48,7 @@ test('event must have pathParameters not empty', () => {
   expect(() => validation.hasParam(eventWithCorrectParams, 'id')).not.toThrow()
 })
 
-test('tokenID passed should be in list', () => {
+test('tokenId passed should be in list', () => {
   const data1 = { Items: ['BTC', 'ETH', 'DOGE']}
   const data2 = { Items: []}
   const token = 'BTC'
@@ -53,4 +56,28 @@ test('tokenID passed should be in list', () => {
   expect(() => validation.arrayExist(data2, token)).toThrow()
   expect(() => validation.arrayExist(data1, token)).toThrow()
   expect(() => validation.arrayExist(data1.Items, token)).not.toThrow()
+})
+
+
+jest.mock('../../controllers/dynamoController')
+
+test('tokenId is already in database', async () => {
+
+  expect.assertions(3)
+
+  DynamoController.mockImplementation( () => {
+    return {
+      listAll: async () => { 
+        return { Items: [ {tokenId: 'BTC'}, {tokenId: 'ETH'}]}
+      }
+    }
+  })
+
+  const tokens1 = ['BTC', 'WAVES', 'DOGE']
+  const tokens2 = ['ETH', 'BAY', 'ADX']
+  const tokens4 = ['DOGE', 'BAY', 'ETC']
+
+  expect(async () => await validation.tokenSaved(tokens1)).rejects.toThrow()
+  expect(async () => await validation.tokenSaved(tokens2)).rejects.toThrow()
+  expect(async () => await validation.tokenSaved(tokens4)).not.toThrow()
 })

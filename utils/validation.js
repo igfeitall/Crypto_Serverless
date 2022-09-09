@@ -1,4 +1,4 @@
-const dynamoDB = require('../controllers/dynamoController')
+const DynamoDB = require('../controllers/dynamoController')
 
 function myError(message, statusCode){
   const error = new Error(message)
@@ -60,9 +60,13 @@ class Validation{
   }
 
   async tokenSaved(tokens){
+    const dynamoDB = new DynamoDB()
 
     const data = await dynamoDB.listAll()
-    const contains = data.Items.filter( item => tokens.includes(item.tokenId)).length > 0
+
+    const contains = data.Items.filter( item => {
+      return tokens.includes(item.tokenId)
+    }).length > 0
 
     if(contains){
       throw myError(`Token: ${tokens} already is tracked. You need to insert a new token to track.`, 400)

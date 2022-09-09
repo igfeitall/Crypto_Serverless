@@ -17,12 +17,9 @@ async function deleteToken (event, context, callback) {
     
     // connection
     await dynamoDB.deleteById(tokenId)
-    console.log(validation)
-    console.log(validation.arrayExist);
     callback(null, response(200, { tokenDeleted: tokenId}))
   } catch (err) {
     
-    console.error(err)
     callback(null, response(err.statusCode, err.message))
   }
 }

@@ -1,7 +1,8 @@
-const dynamoDB = require('../dynamoController')
+const DynamoDB = require('../dynamoController')
+const dynamoDB = new DynamoDB()
 
 test('Dynamo exist', () => {
-  expect(typeof dynamoDB).toBe('function')
+  expect(typeof dynamoDB).toBe('object')
 })
 
 test('Dynamo functions exist', () => {

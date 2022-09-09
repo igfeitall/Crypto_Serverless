@@ -33,6 +33,16 @@ Default region name [None]: us-east-1
 Default output format [None]: 
 ```
 
+The Stack used in this Project was :
+* NodeJs
+* Serverless Framework
+* AWS Lambda
+* AWS API Gateway
+* AWS DynamoDB
+* AWS EventBridge
+* Jest
+* Axios
+
 
 ## 🚀 Instaling Cripto Serverless
 
@@ -62,8 +72,18 @@ This is a list of some Configurations needed:
 To run the Project you only need to deploy it:
 
 ```
-# running ther server
+# running the server
 $ serverless deploy
+
+# rollback the server
+$ serverless remove
+```
+
+The Project was tested with Jest. To run all the unit test, do the following code:
+
+```
+# testing the code
+$ npm test
 ```
 
 ## 🌐 Endpoint List

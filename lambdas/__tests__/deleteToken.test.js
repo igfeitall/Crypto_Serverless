@@ -11,7 +11,7 @@ function mockDynamo(){
   })
 }
 
-test('deleting a token by Id', async () => {
+test('getting an erro by passing a non existent tokenId', async () => {
   const event = {pathParameters: {id: "BTC"}}
 
   mockDynamo()
@@ -31,7 +31,7 @@ test('getting an erro by passing an existent tokenId', async () => {
   DynamoController.mockImplementation(() => {
     return {
       deleteById: () => {
-        throw new Error('token alredy in database')
+        throw new Error('token is not in database')
       }
     }
   })

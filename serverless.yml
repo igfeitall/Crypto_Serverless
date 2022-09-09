@@ -1,4 +1,3 @@
-org: igfeitall
 console: true
 service: cripto-serverless
 frameworkVersion: '3'

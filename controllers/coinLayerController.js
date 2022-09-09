@@ -1,7 +1,7 @@
 const axios = require('axios')
 const link = "http://api.coinlayer.com/"
 
-class coinLayer{
+class CoinLayer{
 
   // fazer tratamento de erros
   async getLive(){
@@ -21,4 +21,4 @@ class coinLayer{
   
 }
 
-module.exports = new coinLayer()
+module.exports = CoinLayer

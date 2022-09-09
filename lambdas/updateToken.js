@@ -1,11 +1,14 @@
 const { response, getUniqueTokens } = require('../utils/utils')
-const dynamoDB = require('../controllers/dynamoController')
-const coinLayer = require('../controllers/coinLayerController')
+const DynamoDB = require('../controllers/dynamoController')
+const CoinLayer = require('../controllers/coinLayerController')
 
 // function used by event bridge
 // update the database, adding a recent version of the tokens and updating the evolution rate
 async function updateToken (event, context, callback) {
   console.log('update');
+
+  const dynamoDB = new DynamoDB()
+  const coinLayer = new CoinLayer()
   
   try {
     // get timestamp and an array of exchangeRate

@@ -1,11 +1,14 @@
 const { response, formatData } = require('../utils/utils')
-const validation = require('../utils/validation')
-const dynamoDB = require('../controllers/dynamoController')
+const Validation = require('../utils/validation')
+const DynamoDB = require('../controllers/dynamoController')
 
 // get the history of a Token
 async function getToken (event, context, callback) {
-  console.log('get');
+  console.log('get')
  
+  const validation = new Validation()
+  const dynamoDB = new DynamoDB()
+
   try {
 
     validation.hasParam(event, 'id')

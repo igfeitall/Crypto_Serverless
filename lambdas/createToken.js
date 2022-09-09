@@ -1,11 +1,15 @@
 const { response } = require('../utils/utils')
-const validation = require('../utils/validation')
-const dynamoDB = require('../controllers/dynamoController')
-const coinLayer = require('../controllers/coinLayerController')
+const Validation = require('../utils/validation')
+const DynamoDB = require('../controllers/dynamoController')
+const CoinLayer = require('../controllers/coinLayerController')
 
 // add tokens in the tracker
 async function createToken (event, context, callback) {
-  console.log('create');
+  console.log('create')
+
+  const validation = new Validation()
+  const dynamoDB = new DynamoDB()
+  const coinLayer = new CoinLayer()
 
   try {
 

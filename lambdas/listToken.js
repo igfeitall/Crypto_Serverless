@@ -1,13 +1,15 @@
 const { response, getUniqueTokens } = require('../utils/utils')
-const dynamoDB = require('../controllers/dynamoController')
+const DynamoDB = require('../controllers/dynamoController')
 
 // list all tokens information, using only the most recent information
 async function listToken (event, context, callback) {
-  console.log('list');
+  console.log('list')
 
-  // connection
+  const dynamoDB = new DynamoDB()
+
   try {
-
+    
+    // connection
     const dataAll = await dynamoDB.listAll()
 
     // get an array of tokens by the recency of timestamp, that is a sort key

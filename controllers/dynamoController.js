@@ -1,13 +1,13 @@
 const AWS = require('aws-sdk')
-const validation = require('../utils/validation')
+const Validation = require('../utils/validation')
 const { chunks } = require('../utils/utils')
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient()
 const TableName = process.env.TABLE_NAME
 
-class dynamoDB{
+class DynamoDB{
 
-  static async getById(tokenId) {
+  async getById(tokenId) {
     const Limit = process.env.HISTORIC_LIMIT
     const params = {
         KeyConditionExpression: 'tokenId = :id',
@@ -22,7 +22,7 @@ class dynamoDB{
     return dynamoClient.query(params).promise()
   }
   
-  static async listAll(){
+  async listAll(){
     const params = {
       TableName
     }
@@ -30,7 +30,9 @@ class dynamoDB{
     return dynamoClient.scan(params).promise()
   }
   
-  static async deleteById(tokenId){
+  async deleteById(tokenId){
+
+    const validation = new Validation()
   
     const queryParams = {
       KeyConditionExpression: 'tokenId = :id',
@@ -75,7 +77,7 @@ class dynamoDB{
     }
   }
   
-  static async addItems (items){
+  async addItems (items){
   
     const batchCalls = chunks(items, 25).map( async () => {
       const PutRequests = items.map( item => {
@@ -101,4 +103,4 @@ class dynamoDB{
 }
 
 
-module.exports = dynamoDB
+module.exports = DynamoDB

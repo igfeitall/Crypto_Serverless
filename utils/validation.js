@@ -12,16 +12,16 @@ function notExist(item){
   else return false
 }
 
-class validation{
+class Validation{
   
-  static hasBody(event){
+  hasBody(event){
   
     if(notExist(event.body)){
       throw myError('Body not found. You must pass an body for this function', 400)
     }
   }
   
-  static hasObject(object){
+  hasObject(object){
   
     const tokens = object.tokens
   
@@ -32,7 +32,7 @@ class validation{
     return tokens
   }
   
-  static hasToken(rates, token){
+  hasToken(rates, token){
   
     const link = 'https://coinlayer.com/symbols'
   
@@ -41,14 +41,14 @@ class validation{
     }
   }
   
-  static hasParam(event, id){
+  hasParam(event, id){
   
     if(notExist(event.pathParameters[id])){
       throw myError(`ID invalid. You must pass and valid token for the id as a Parameter.`, 400)
     }
   }
   
-  static arrayExist(array, tokenId){
+  arrayExist(array, tokenId){
 
     if(!Array.isArray(array)){
       throw myError(`Something got Wrong in Database. Try again later.`, 500)
@@ -59,7 +59,7 @@ class validation{
     }
   }
 
-  static async tokenSaved(tokens){
+  async tokenSaved(tokens){
 
     const data = await dynamoDB.listAll()
     const contains = data.Items.filter( item => tokens.includes(item.tokenId)).length > 0
@@ -72,4 +72,4 @@ class validation{
 }
 
 
-module.exports = validation
+module.exports = Validation

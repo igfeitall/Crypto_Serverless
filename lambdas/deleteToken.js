@@ -1,11 +1,14 @@
 const { response } = require('../utils/utils')
-const dynamoDB = require('../controllers/dynamoController')
-const validation = require('../utils/validation')
+const DynamoDB = require('../controllers/dynamoController')
+const Validation = require('../utils/validation')
 
 // function to delete a token by id of the tracker
 async function deleteToken (event, context, callback) {
-  console.log('delete');
+  console.log('delete')
 
+  const validation = new Validation()
+  const dynamoDB = new DynamoDB()
+  
   try {
 
     validation.hasParam(event, 'id')

@@ -6,7 +6,7 @@ custom:
   UPDATE_TIMER: 60 minutes
   settings:
     TABLE_NAME: Tokens
-    COINLAYER_KEY: 61508fe481449bc21d32987cef781e4b
+    COINLAYER_KEY: 444de9717a5c7a18034dad8f532105d8
     HISTORIC_LIMIT: 5
 
 provider:

@@ -49,15 +49,21 @@ $ cd Cripto_Serverless
 
 # Install dependencies
 $ npm install
-
-# running ther server
-$ serverless deploy
 ```
 
 ## ☕ Using Cripto API
 
-This is a list of some Configurations needed:
+ link: https://akjq5rkwji.execute-api.us-east-1.amazonaws.com
 
+This is a list of some Configurations needed:
+ 
+  The configuration of the API can be done altering the serverless.yml archive : https://github.com/igfeitall/Cripto_Serverless/blob/main/serverless.yml.
+
+  UPDATE_TIMER (in Minutes), is the minutes to trigger the update via AWS EventBridge,
+  HISTORIC_LIMIT, number of rows that will apear when use GET /tokens endpoint
+  COINLAYER_KEY, the key of yout acount on cointlayer website
+
+  You need to create an acount on coinLayer to be able to use this API : https://coinlayer.com/login
 
 To run the Project you only need to deploy it:
 

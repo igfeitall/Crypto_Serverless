@@ -53,11 +53,9 @@ $ npm install
 
 ## ☕ Using Cripto API
 
- link: https://akjq5rkwji.execute-api.us-east-1.amazonaws.com
-
 This is a list of some Configurations needed:
  
-  The configuration of the API can be done altering the serverless.yml archive : https://github.com/igfeitall/Cripto_Serverless/blob/main/serverless.yml.
+  The configuration of the API can be done altering the [serverless.yml](https://github.com/igfeitall/Cripto_Serverless/blob/main/serverless.yml) archive.
 
   UPDATE_TIMER (in Minutes), is the minutes to trigger the update via AWS EventBridge,
   HISTORIC_LIMIT, number of rows that will apear when use GET /tokens endpoint
@@ -73,6 +71,9 @@ $ serverless deploy
 ```
 
 ## 🌐 Endpoint List
+
+  This is the URL for the application runing rigth now.
+  URL: https://akjq5rkwji.execute-api.us-east-1.amazonaws.com
 
   - POST /tokens (add one or many tokens to track):
 
@@ -107,8 +108,10 @@ $ serverless deploy
 
   The updateToken function is running on the AWS EventBridge.
 
+  To import the collections of Routes on Insomniam use the Json : [RoutesCollection](https://github.com/igfeitall/Cripto_Serverless/blob/main/RoutesCollection.json)
+
 ## 📝 License
 
-This project is using the MIT Licens. click to follow to the archive [License](LICENSE.md).
+This project is using the MIT Licens. click to follow to the archive [License](https://github.com/igfeitall/Cripto_Serverless/blob/main/LICENSE).
 
 [⬆ back to the top](#Cripto_Serverless)<br>

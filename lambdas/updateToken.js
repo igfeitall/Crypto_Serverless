@@ -39,8 +39,8 @@ async function updateToken (event, context, callback) {
       return {tokenId: token.tokenId, timestamp, exchangeRate, evolutionRate}
     })
     
-    const tokensUpdated = dynamoDB.addItems(tokensObj)
-    callback(null, response({ updatedTokens: tokensUpdated }))
+    await dynamoDB.addItems(tokensObj)
+    callback(null, response(200, { updatedTokens: tokensObj }))
   } catch (err) {
     
     console.error(err)

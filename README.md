@@ -5,8 +5,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
 ![Node](https://img.shields.io/node/v/serverless?style=for-the-badge)
 
-
-### IMAGE
+![image](https://raw.githubusercontent.com/igfeitall/Cripto_Serverless/main/Lambda%20Function.png)
  
 > The Cripto Serverless is a Serverless API, made with Node.js and Serverless Framework, using the AWS Lambda and others AWS functions. Your job is to keep track of some criptocoins exchange rate to $(Dollar), and the evolution rate in % since the last iteration. It keep tracks the cripto by a given array, and can return a history of the recent rates.
 
@@ -15,13 +14,12 @@
 Before we start, check the following prerequisites:
 
 * Instaled the most recent version of JavaScript and Node.
-* Have and Windows Machine
 * Created and Account on Amazon and have IAM for this application
 * Installed the Amazon CLI
 
 ## 🤖 Connecting you Amazon Keys
 
-To run this project you need to connect your own keys:
+To run this project you need to connect your own IAM keys:
 
 ```
 # start the configuration
@@ -35,10 +33,18 @@ Default region name [None]: us-east-1
 Default output format [None]: 
 ```
 
+The Stack used in this Project was :
+* NodeJs
+* Serverless Framework
+* AWS Lambda
+* AWS API Gateway
+* AWS DynamoDB
+* AWS EventBridge
+* Jest
+* Axios
+
 
 ## 🚀 Instaling Cripto Serverless
-
-You need to have the node and AWS CLI installed :
 
 ```
 # Clone this repository
@@ -66,8 +72,18 @@ This is a list of some Configurations needed:
 To run the Project you only need to deploy it:
 
 ```
-# running ther server
+# running the server
 $ serverless deploy
+
+# rollback the server
+$ serverless remove
+```
+
+The Project was tested with Jest. To run all the unit test, do the following code:
+
+```
+# testing the code
+$ npm test
 ```
 
 ## 🌐 Endpoint List
@@ -83,7 +99,7 @@ $ serverless deploy
   // example
   { 
 
-  "body": ['BTC', 'ETH', `DOGE`']
+  "body": ["BTC", "ETH", "DOGE"]
 
   }
   ```
@@ -112,6 +128,6 @@ $ serverless deploy
 
 ## 📝 License
 
-This project is using the MIT Licens. click to follow to the archive [License](https://github.com/igfeitall/Cripto_Serverless/blob/main/LICENSE).
+This project is using the MIT License. click to follow to the archive [License](https://github.com/igfeitall/Cripto_Serverless/blob/main/LICENSE).
 
 [⬆ back to the top](#Cripto_Serverless)<br>

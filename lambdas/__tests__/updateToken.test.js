@@ -63,6 +63,5 @@ test('testing the update response', async () => {
         }
       ]
     })
-    console.log(msg)
   })
 })

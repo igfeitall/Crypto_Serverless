@@ -58,9 +58,7 @@ test('getting an erro by passing a non existent tokenId', async () => {
     }
   })
 
-  expect(async () => await getToken.handler(event, null, (error, msg) => {
-    console.log(msg)
-  })).rejects.toThrow()
+  expect(async () => await getToken.handler(event, null, (error, msg) => null)).rejects.toThrow()
 
 })
 
@@ -69,8 +67,6 @@ test('getting an exeption by not passing an id', async () => {
 
   mockDynamo()
 
-  expect(async () => await getToken.handler(event, null, (error, msg) => {
-    console.log(msg)
-  })).rejects.toThrow()
+  expect(async () => await getToken.handler(event, null, (error, msg) => null)).rejects.toThrow()
 
 })

@@ -17,7 +17,6 @@ async function getToken (event, context, callback) {
     // connection
     const tokenHistory = await dynamoDB.getById(tokenId)
     validation.arrayExist(tokenHistory.Items, tokenId)
-    
     const formatedTokenHistory = tokenHistory.Items.map( token => formatData(token))
     callback(null, response(200, formatedTokenHistory))
   } catch (err) {

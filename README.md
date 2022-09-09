@@ -57,9 +57,9 @@ This is a list of some Configurations needed:
  
   The configuration of the API can be done altering the [serverless.yml](https://github.com/igfeitall/Cripto_Serverless/blob/main/serverless.yml) archive.
 
-  UPDATE_TIMER (in Minutes), is the minutes to trigger the update via AWS EventBridge,
-  HISTORIC_LIMIT, number of rows that will apear when use GET /tokens endpoint
-  COINLAYER_KEY, the key of yout acount on cointlayer website
+  * UPDATE_TIMER (in Minutes), is the minutes to trigger the update via AWS EventBridge,
+  * HISTORIC_LIMIT, number of rows that will apear when use GET /tokens endpoint
+  * COINLAYER_KEY, the key of yout acount on cointlayer website
 
   You need to create an acount on coinLayer to be able to use this API : https://coinlayer.com/login
 
@@ -73,9 +73,9 @@ $ serverless deploy
 ## 🌐 Endpoint List
 
   This is the URL for the application runing rigth now.
-  URL: https://akjq5rkwji.execute-api.us-east-1.amazonaws.com
+   - URL: https://akjq5rkwji.execute-api.us-east-1.amazonaws.com
 
-  - POST /tokens (add one or many tokens to track):
+  ### POST /tokens (add one or many tokens to track):
 
   The Cripto Serverless use a 3rd Party Token API, this is the list of symbols : https://coinlayer.com/symbols.
 
@@ -88,9 +88,9 @@ $ serverless deploy
   }
   ```
 
-  - GET /tokens (return the list of all tokens and their last exchange rate and the evolution rate).
+  ### GET /tokens (return the list of all tokens and their last exchange rate and the evolution rate).
 
-  - GET /tokens/:id (return specific token values and the history of exchange rates and evolutions).
+  ### GET /tokens/:id (return specific token values and the history of exchange rates and evolutions).
   
   ```
   // example
@@ -98,7 +98,7 @@ $ serverless deploy
   /tokens/BTC
   ```
 
-  - DELETE /tokens/:id (delete all ocurrency of a token in the database, and don`t track it anymore).
+  ### DELETE /tokens/:id (delete all ocurrency of a token in the database, and don`t track it anymore).
 
   ```
   // example

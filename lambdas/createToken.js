@@ -17,7 +17,6 @@ async function createToken (event, context, callback) {
     const body  = JSON.parse(event.body)
 
     const tokens = validation.hasObject(body, 'tokens')
-    console.log(tokens);
 
     await validation.tokenSaved(tokens)
 

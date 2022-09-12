@@ -5,7 +5,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
 ![Node](https://img.shields.io/node/v/serverless?style=for-the-badge)
 
-![image](https://raw.githubusercontent.com/igfeitall/Cripto_Serverless/main/Lambda%20Function.png)
+![image](https://raw.githubusercontent.com/igfeitall/Crypto_Serverless/main/Lambda%20Function.png)
  
 > The Crypto Serverless is a Serverless API, made with Node.js and Serverless Framework, using the AWS Lambda and others AWS functions. Your job is to keep track of some cryptocoins exchange rate to $(Dollar), and the evolution rate in % since the last iteration. It keep tracks the Crypto by a given array, and can return a history of the recent rates.
 
@@ -48,10 +48,10 @@ The Stack used in this Project was :
 
 ```
 # Clone this repository
-$ git clone https://github.com/igfeitall/Cripto_Serverless.git
+$ git clone https://github.com/igfeitall/Crypto_Serverless.git
 
 # Go into the repository
-$ cd Cripto_Serverless
+$ cd Crypto_Serverless
 
 # Install dependencies
 $ npm install
@@ -61,7 +61,7 @@ $ npm install
 
 This is a list of some Configurations needed:
  
-  The configuration of the API can be done altering the [serverless.yml](https://github.com/igfeitall/Cripto_Serverless/blob/main/serverless.yml) archive.
+  The configuration of the API can be done altering the [serverless.yml](https://github.com/igfeitall/Crypto_Serverless/blob/main/serverless.yml) archive.
 
   * UPDATE_TIMER (in Minutes), is the minutes to trigger the update via AWS EventBridge,
   * HISTORIC_LIMIT, number of rows that will apear when use GET /tokens endpoint
@@ -124,10 +124,10 @@ $ npm test
 
   The updateToken function is running on the AWS EventBridge.
 
-  To import the collections of Routes on Insomniam use the Json : [RoutesCollection](https://github.com/igfeitall/Cripto_Serverless/blob/main/RoutesCollection.json)
+  To import the collections of Routes on Insomniam use the Json : [RoutesCollection](https://github.com/igfeitall/Crypto_Serverless/blob/main/RoutesCollection.json)
 
 ## 📝 License
 
-This project is using the MIT License. click to follow to the archive [License](https://github.com/igfeitall/Cripto_Serverless/blob/main/LICENSE).
+This project is using the MIT License. click to follow to the archive [License](https://github.com/igfeitall/Crypto_Serverless/blob/main/LICENSE).
 
-[⬆ back to the top](#Cripto_Serverless)<br>
+[⬆ back to the top](#Crypto_Serverless)<br>

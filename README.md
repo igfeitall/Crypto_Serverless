@@ -1,4 +1,4 @@
-# Cripto Serverless
+# Crypto Serverless
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
@@ -7,7 +7,7 @@
 
 ![image](https://raw.githubusercontent.com/igfeitall/Cripto_Serverless/main/Lambda%20Function.png)
  
-> The Cripto Serverless is a Serverless API, made with Node.js and Serverless Framework, using the AWS Lambda and others AWS functions. Your job is to keep track of some criptocoins exchange rate to $(Dollar), and the evolution rate in % since the last iteration. It keep tracks the cripto by a given array, and can return a history of the recent rates.
+> The Crypto Serverless is a Serverless API, made with Node.js and Serverless Framework, using the AWS Lambda and others AWS functions. Your job is to keep track of some cryptocoins exchange rate to $(Dollar), and the evolution rate in % since the last iteration. It keep tracks the Crypto by a given array, and can return a history of the recent rates.
 
 ## 💻 Prerequisites
 
@@ -44,7 +44,7 @@ The Stack used in this Project was :
 * Axios
 
 
-## 🚀 Instaling Cripto Serverless
+## 🚀 Instaling Crypto Serverless
 
 ```
 # Clone this repository
@@ -57,7 +57,7 @@ $ cd Cripto_Serverless
 $ npm install
 ```
 
-## ☕ Using Cripto API
+## ☕ Using Crypto API
 
 This is a list of some Configurations needed:
  
@@ -93,7 +93,7 @@ $ npm test
 
   ### POST /tokens (add one or many tokens to track):
 
-  The Cripto Serverless use a 3rd Party Token API, this is the list of symbols : https://coinlayer.com/symbols.
+  The Crypto Serverless use a 3rd Party Token API, this is the list of symbols : https://coinlayer.com/symbols.
 
   ```
   // example
